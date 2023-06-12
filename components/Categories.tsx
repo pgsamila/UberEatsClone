@@ -42,8 +42,8 @@ const Categories = () => {
         }}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {/* Loop start here */}
-                {items.map((item, idex) => (
-                    <View style={{
+                {items.map((item, index) => (
+                    <View key={index} style={{
                         alignItems: "center", marginRight: 30
                     }}>
                         <Image source={item.image} style={{
