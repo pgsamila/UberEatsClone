@@ -1,6 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
+import { useRoute } from '@react-navigation/native';
 
 export const localRestaurants = [
     {
@@ -32,22 +33,32 @@ export const localRestaurants = [
     },
 ];
 
-const RestaurantItems = (props: { restaurantData: any[]; }) => {
+const RestaurantItems = (props: { restaurantData: any[]; navigation: any }) => {
+
+    const goToRestaurant = () => (
+        props.navigation.navigate('RestaurantDetail')
+    )
+
     return (
-        <TouchableOpacity activeOpacity={1} style={{ marginBottom: 10 }}>
-            {props.restaurantData.map((restaurant, index) => (
-                <View
-                    key={index}
-                    style={{
-                        marginTop: 10,
-                        padding: 15,
-                        backgroundColor: "white"
-                    }}>
-                    <RestaurantImage image={restaurant.image_url} />
-                    <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
-                </View>
-            ))}
-        </TouchableOpacity>
+        <View>
+            {
+                props.restaurantData.map((restaurant, index) => (
+                    <TouchableOpacity key={index}
+                        activeOpacity={0.5} style={{ marginBottom: 10 }}
+                        onPress={goToRestaurant}>
+                        <View
+                            style={{
+                                marginTop: 10,
+                                padding: 15,
+                                backgroundColor: "white"
+                            }}>
+                            <RestaurantImage image={restaurant.image_url} />
+                            <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
+                        </View>
+                    </TouchableOpacity>
+                ))
+            }
+        </View>
     )
 }
 

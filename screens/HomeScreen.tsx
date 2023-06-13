@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, ScrollView } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView, Button } from 'react-native'
 import React from 'react'
 import { Divider } from 'react-native-elements'
 import BottomTabs from '../components/Home/BottomTabs'
@@ -6,8 +6,11 @@ import RestaurantItems, { localRestaurants } from '../components/Home/Restaurant
 import HeaderTabs from '../components/Home/HeaderTabs'
 import SearchBar from '../components/Home/SearchBar'
 import Categories from '../components/Home/Categories'
+import { useNavigation } from '@react-navigation/native'
 
-const HomeScreen = () => {
+const HomeScreen = ({ }) => {
+
+    const navigation = useNavigation();
 
     const [restaurantData, setRestaurantData] = React.useState(localRestaurants)
 
@@ -19,7 +22,7 @@ const HomeScreen = () => {
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Categories />
-                <RestaurantItems restaurantData={restaurantData} />
+                <RestaurantItems restaurantData={restaurantData} navigation={navigation} />
             </ScrollView>
             <Divider width={1} />
             <BottomTabs />

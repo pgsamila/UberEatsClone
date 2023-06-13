@@ -50,7 +50,7 @@ const MenuItems = () => {
                         <FoodInfo food={food} />
                         <FoodImage image={food.image} />
                     </View>
-                    <Divider width={0.5} />
+                    <Divider width={0.5} style={{ marginHorizontal: 20 }} />
                 </View>
             ))}
         </ScrollView>
