@@ -4,6 +4,8 @@ import HeaderTabs from '../components/HeaderTabs'
 import SearchBar from '../components/SearchBar'
 import Categories from '../components/Categories'
 import RestaurantItems, { localRestaurants } from '../components/RestaurantItems'
+import { Divider } from 'react-native-elements'
+import BottomTabs from '../components/BottomTabs'
 
 const HomeScreen = () => {
 
@@ -19,7 +21,8 @@ const HomeScreen = () => {
                 <Categories />
                 <RestaurantItems restaurantData={restaurantData} />
             </ScrollView>
-
+            <Divider width={1} />
+            <BottomTabs />
         </SafeAreaView>
     )
 }
