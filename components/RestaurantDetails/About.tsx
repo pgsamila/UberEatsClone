@@ -1,17 +1,20 @@
 import { View, Text, SafeAreaView, Image } from 'react-native'
 import React from 'react'
-import RestaurantDetails from '../../screens/RestaurantDetails';
 
-const image = "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudCUyMGZvb2R8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
+const About = (props: { route: any }) => {
 
-const title = "Farmhouse Kitchen Thai Cuisine"
-const description = "Thai・Confart・Food・$$・4・(2345+)"
+    const { name, image, price, reviews, rating, categories } =
+        props.route.params;
 
-const About = () => {
+    const formattedCategories = categories.map((data: string) => data).join(" • ");
+
+    const description = `${formattedCategories} ${price ? " • " + price : ""
+        } • 🎫 • ${rating} ⭐ (${reviews}+)`;
+
     return (
         <View>
             <RestaurantImage image={image} />
-            <RestaurantTitle title={title} />
+            <RestaurantTitle title={name} />
             <RestaurantDescription description={description} />
         </View>
     )

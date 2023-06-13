@@ -45,7 +45,14 @@ const RestaurantItems = (props: { restaurantData: any[]; navigation: any }) => {
                 props.restaurantData.map((restaurant, index) => (
                     <TouchableOpacity key={index}
                         activeOpacity={0.5} style={{ marginBottom: 10 }}
-                        onPress={goToRestaurant}>
+                        onPress={() => props.navigation.navigate('RestaurantDetail', {
+                            name: restaurant.name,
+                            image: restaurant.image_url,
+                            price: restaurant.price,
+                            reviews: restaurant.reviews,
+                            rating: restaurant.rating,
+                            categories: restaurant.categories
+                        })}>
                         <View
                             style={{
                                 marginTop: 10,
